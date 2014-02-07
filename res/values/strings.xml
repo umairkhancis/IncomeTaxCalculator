@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IncomeTaxCalculator</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+<!--     Used for Main Menu Buttons -->
+    <string name="main_menu">Main Menu</string>
+    <string name="calc_tax">Calculate Tax</string>
+    <string name="calc_impact">Calculate Impact</string>
+    <string name="howtosave">How To Save Tax</string>
+    <string name="plantosave">Plan To Save Tax</string>
+    
+<!--     Used for Activities Titles -->
+    <string name="title_activity_calculate_tax">CalculateTax</string>
+    <string name="title_activity_calculate_impact">CalculateImpact</string>
+    <string name="title_activity_how_to_save">HowToSave</string>
+    <string name="title_activity_plan_to_save">PlanToSave</string>
+    
+    <string name="calculate_tax">Calculate Income Tax</string>
+    <string name="calculate_impact">Calculate Impact</string>
+    
+    <!--     Used in Calculate Tax and Impact Both -->
+    <string name="income_hint_monthly">Enter Your Monthly Income</string>
+    <string name="income_hint_yearly">Enter Your Yearly Income</string>
+    
+    <!--     Used in Calculate Impact -->
+	<string name="increment_hint_monthly">Enter Your Monthly Increment</string>
+    <string name="increment_hint_yearly">Enter Your Yearly Increment</string>
+    
+    <!--     Used in Calculate Tax -->
+    <string name="tax_result_monthly">You would pay monthly  </string>
+    <string name="tax_result_yearly">You would pay yearly  </string>
+    
+<!--     Used in Calculate Impact -->
+    <string name="current_tax_result_monthly">Currently you are paying monthly </string>
+    <string name="current_tax_result_yearly">Currently you are paying yearly </string>
+    <string name="current_salary_result_monthly">Currently you are taking home monthly </string>
+    <string name="current_salary_result_yearly">Currently you are taking home yearly </string>
+    
+<!--     Used in Calculate Impact -->    
+    <string name="new_tax_result_monthly">Now you are paying monthly </string>
+    <string name="new_tax_result_yearly">Now you are paying yearly </string>
+    <string name="new_salary_result_monthly">Now you are taking home monthly </string>
+    <string name="new_salary_result_yearly">Now you are taking home yearly </string>
+
+</resources>

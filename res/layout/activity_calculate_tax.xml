@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <EditText
+        android:id="@+id/incomeEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/income_hint_monthly"
+        android:inputType="text" />
+
+     <Spinner
+        android:id="@+id/typeDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/incomeEditText" />
+
+    <Button
+        android:id="@+id/calculateTaxButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/typeDropdown"
+        android:text="@string/calc_tax" />
+
+    <TextView
+        android:id="@+id/taxResultSentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/calculateTaxButton"
+        android:text="" />
+
+    
+    <TextView
+        android:id="@+id/taxResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculateTaxButton"
+       	android:layout_toRightOf="@id/taxResultSentenceTextView"
+        android:text="" />
+
+</RelativeLayout>

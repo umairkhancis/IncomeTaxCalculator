@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <EditText
+        android:id="@+id/incomeEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/income_hint_monthly"
+        android:inputType="numberDecimal" />
+    
+	<EditText
+        android:id="@+id/incrementEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/incomeEditText"
+        android:hint="@string/increment_hint_monthly"
+        android:inputType="numberDecimal" />
+
+     <Spinner
+        android:id="@+id/typeDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/incrementEditText" />
+
+    <Button
+        android:id="@+id/calculateImpactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/typeDropdown"
+        android:text="@string/calc_tax" />
+
+    <TextView
+        android:id="@+id/currentTaxResultSentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/calculateImpactButton"
+        android:text="" />
+
+    
+    <TextView
+        android:id="@+id/currentTaxResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculateImpactButton"
+       	android:layout_toRightOf="@id/currentTaxResultSentenceTextView"
+        android:text="" />
+    
+	<TextView
+        android:id="@+id/currentTakeHomeSalarySentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/currentTaxResultSentenceTextView"
+        android:text="" />
+
+    
+    <TextView
+        android:id="@+id/currentTakeHomeSalaryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentTaxResultTextView"
+       	android:layout_toRightOf="@id/currentTakeHomeSalarySentenceTextView"
+        android:text="" />
+    
+	<TextView
+        android:id="@+id/newTaxResultSentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/currentTakeHomeSalarySentenceTextView"
+        android:text="" />
+
+    
+    <TextView
+        android:id="@+id/newTaxResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentTakeHomeSalaryTextView"
+       	android:layout_toRightOf="@id/newTaxResultSentenceTextView"
+        android:text="" />
+    
+    
+	<TextView
+        android:id="@+id/newTakeHomeSalarySentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/newTaxResultSentenceTextView"
+        android:text="" />
+
+    
+    <TextView
+        android:id="@+id/newTakeHomeSalaryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newTaxResultTextView"
+       	android:layout_toRightOf="@id/newTakeHomeSalarySentenceTextView"
+        android:text="" />
+
+</RelativeLayout>

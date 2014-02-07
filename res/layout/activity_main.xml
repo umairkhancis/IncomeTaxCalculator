@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/main_menu"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/calc_tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calc_tax"  />
+
+    <Button
+        android:id="@+id/calc_impact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calc_impact" />
+    
+	<Button
+	    android:id="@+id/howtosave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/howtosave" />
+
+    <Button
+        android:id="@+id/plantosave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plantosave" />
+
+</LinearLayout>
