@@ -7,6 +7,7 @@ import com.netpace.itc.util.IncomeTax;
 import com.netpace.itc.util.IncomeTaxSlab;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.View;
@@ -34,6 +35,7 @@ public class CalculateTax extends Activity {
 		typeDropDown.setOnItemSelectedListener(new OnItemSelectedListener(){
 			String INCOME_HINT_MONTHLY = getResources().getString(R.string.income_hint_monthly);
 			String INCOME_HINT_YEARLY = getResources().getString(R.string.income_hint_yearly);
+			
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
 					int position, long id) {
@@ -60,28 +62,39 @@ public class CalculateTax extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Long payableTax = 0L;
-				Long income = Long.parseLong(incomeEditText.getText().toString());
-				String text = "";
-				// if monthly income then convert to yearly
-				if(typeDropDown.getSelectedItemId() == 0) {
-					income = income*12; // always send yearly income to calculate income tax
-					payableTax = getIncomeTax(income)/12; // convert to monthly income tax
-					
-					text = getResources().getString(R.string.tax_result_monthly) + " ";
-					taxResultSentenceTextView.setText(text.toString());
+				Double payableTax = 0d;
+				Double income = Double.parseDouble(incomeEditText.getText().toString());
+				
+				if( isMonthly() ) {
+					payableTax = calculateMonthlyIncomeTax(income);
+					displayTextView(taxResultSentenceTextView, getResources().getString(R.string.tax_result_monthly), TypedValue.COMPLEX_UNIT_PX, 60);
 				} else {
-					payableTax = getIncomeTax(income);
-					
-					text = getResources().getString(R.string.tax_result_yearly) + " ";
-					taxResultSentenceTextView.setText(text.toString());
+					payableTax = calculateYearlyIncomeTax(income);
+					displayTextView(taxResultSentenceTextView, getResources().getString(R.string.tax_result_yearly), TypedValue.COMPLEX_UNIT_PX, 60);
 				}
 				
-				taxResultSentenceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
-				taxResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
-				taxResultTextView.setText(payableTax.toString() + " PKR");
+				displayTextView(taxResultTextView, " " + payableTax.toString()+ " PKR", TypedValue.COMPLEX_UNIT_PX, 60);
 			}
 		});
+	
+	}
+	
+	private boolean isMonthly() {
+		return (typeDropDown.getSelectedItemId() == 0) ? true: false;
+	}
+	
+	private Double calculateMonthlyIncomeTax(Double income) {
+		income = income*12; // always send yearly income to calculate income tax
+		return (double) Math.round(getIncomeTax(income)/12); // convert to monthly income tax
+	} 
+	
+	private Double calculateYearlyIncomeTax(Double income) {
+		return (double) Math.round(getIncomeTax(income)); 
+	} 
+	
+	private void displayTextView(TextView textView, String text, int unit_TypeValue, float size) {
+		textView.setTextSize(unit_TypeValue, size);
+		textView.setText(text);
 	}
 
 	@Override
@@ -91,7 +104,7 @@ public class CalculateTax extends Activity {
 		return true;
 	}
 	
-	private Long getIncomeTax(Long income) {
+	private Double getIncomeTax(Double income) {
 		incomeTaxSlabs = getSlabsFromDatabase();
 		incomeTax = new IncomeTax(income, incomeTaxSlabs);
 		return incomeTax.getPayableTax();
@@ -100,13 +113,11 @@ public class CalculateTax extends Activity {
 	private List<IncomeTaxSlab> getSlabsFromDatabase() {
 		incomeTaxSlabs = new ArrayList<IncomeTaxSlab>();
 		
-		// To be fetched from Database 
-		incomeTaxSlabs.add(new IncomeTaxSlab(0L, 400000L, 0L, 0F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(400000L, 750000L, 0L, 5F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(750000L, 1500000L, 17500L, 10F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(1500000L, 2000000L, 95000L, 15F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(2000000L, 2500000L, 175000L, 17.5F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(2500000L, -1L, 420000L, 20F));
+		//Intent serviceIntent = new Intent(this, ); 
+		
+		
+		// Hard Coded List
+		//getHardCodedSlabs();
 		
 		return incomeTaxSlabs;
 	}
@@ -130,4 +141,12 @@ public class CalculateTax extends Activity {
 		typeDropDown.setAdapter(dataAdapter);
 	}
 
+	private void getHardCodedSlabs() {
+		incomeTaxSlabs.add(new IncomeTaxSlab(0d, 400000d, 0d, 0f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(400000d, 750000d, 0d, 5f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(750000d, 1500000d, 17500d, 10f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(1500000d, 2000000d, 95000d, 15f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(2000000d, 2500000d, 175000d, 17.5f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(2500000d, -1d, 420000d, 20f));
+	}
 }

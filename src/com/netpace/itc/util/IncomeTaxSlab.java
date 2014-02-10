@@ -1,13 +1,13 @@
 package com.netpace.itc.util;
 
 public class IncomeTaxSlab {
-	private Long startValue;
-	private Long endValue;
-	private Long offsetValue; // r% of the amount exceeding startValue
+	private Double startValue;
+	private Double endValue;
+	private Double offsetValue; // r% of the amount exceeding startValue
 	private float slabPercentageValue;
 
 	
-	public IncomeTaxSlab(Long startValue, Long endValue, Long offsetValue,
+	public IncomeTaxSlab(Double startValue, Double endValue, Double offsetValue,
 			float slabPercentageValue) {
 		this.startValue = startValue;
 		this.endValue = endValue;
@@ -15,15 +15,15 @@ public class IncomeTaxSlab {
 		this.slabPercentageValue = slabPercentageValue;
 	}
 
-	public Long getStartValue() {
+	public Double getStartValue() {
 		return startValue;
 	}
 
-	public Long getEndValue() {
+	public Double getEndValue() {
 		return endValue;
 	}
 
-	public Long getOffsetValue() {
+	public Double getOffsetValue() {
 		return offsetValue;
 	}
 
@@ -31,15 +31,15 @@ public class IncomeTaxSlab {
 		return slabPercentageValue/100F;
 	}
 	
-	public void setStartValue(Long startValue) {
+	public void setStartValue(Double startValue) {
 		this.startValue = startValue;
 	}
 
-	public void setEndValue(Long endValue) {
+	public void setEndValue(Double endValue) {
 		this.endValue = endValue;
 	}
 
-	public void setOffsetValue(Long offsetValue) {
+	public void setOffsetValue(Double offsetValue) {
 		this.offsetValue = offsetValue;
 	}
 

@@ -4,24 +4,24 @@ import java.util.List;
 
 public class IncomeTax {
 
-	private Long income;
-	private Long payableTax;
+	private Double income;
+	private Double payableTax;
 	private List<IncomeTaxSlab> slabs;
 
-	public IncomeTax(Long income, List<IncomeTaxSlab> slabs) {
+	public IncomeTax(Double income, List<IncomeTaxSlab> slabs) {
 		this.slabs = slabs;
 		this.income = income;
 	}
 
-	public Long getIncome() {
+	public Double getIncome() {
 		return income;
 	}
 
-	public void setIncome(Long income) {
+	public void setIncome(Double income) {
 		this.income = income;
 	}
 
-	public void setPayableTax(Long payableTax) {
+	public void setPayableTax(Double payableTax) {
 		this.payableTax = payableTax;
 	}
 
@@ -33,14 +33,14 @@ public class IncomeTax {
 		this.slabs = slabs;
 	}
 
-	public Long getPayableTax() {
+	public Double getPayableTax() {
 		IncomeTaxSlab slab = findSlab();
 		float percent = slab.getSlabPercentageValue();
-		Long offset = slab.getOffsetValue();
-		Long start = slab.getStartValue();
-		Long exceeding = income - start;
+		Double offset = slab.getOffsetValue();
+		Double start = slab.getStartValue();
+		Double exceeding = income - start;
 
-		payableTax = (long) (exceeding * percent + offset);
+		payableTax = (double) (exceeding * percent + offset);
 		return payableTax;
 	}
 
@@ -52,7 +52,6 @@ public class IncomeTax {
 				break;
 			}
 		}
-		
 		return slab;
 	}
 

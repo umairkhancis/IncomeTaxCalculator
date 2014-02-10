@@ -37,6 +37,9 @@
             android:name="com.netpace.itc.activities.PlanToSave"
             android:label="@string/title_activity_plan_to_save" >
         </activity>
+        
+        <service android:name=".GetSlabsService" />
+        
     </application>
 
 </manifest>

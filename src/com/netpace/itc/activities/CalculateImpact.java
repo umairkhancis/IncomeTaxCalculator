@@ -85,23 +85,28 @@ public class CalculateImpact extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Long payableTax = 0L;
-				Long income = Long.parseLong(incomeEditText.getText()
+				Double payableTax = 0d;
+				Double newPayableTax = 0d;
+				Double income = Double.parseDouble(incomeEditText.getText()
 						.toString());
-				Long takeHomeSalary = 0L;
+				Double increment = Double.parseDouble(incrementEditText.getText()
+						.toString());
+				Double takeHomeSalary = 0d;
+				Double newTakeHomeSalary = 0d;
 
 				// if monthly income then convert to yearly
 				if (typeDropDown.getSelectedItemId() == 0) {
 
-					income = income * 12; // always send yearly income to
-											// calculate income tax
-					payableTax = getIncomeTax(income) / 12; // convert to
-															// monthly income
-															// tax
-					income = income / 12; // back to monthly income b/c we have
-											// to display current take home
-											// salary monthly
+					income = income * 12; // always send yearly income to calculate income tax
+					payableTax = getIncomeTax(income) / 12; // convert to monthly income tax
+					income = income / 12; // back to monthly income b/c we have to display current take home salary monthly
 					takeHomeSalary = income - payableTax;
+					
+					Double newincome = income+increment;
+					newincome = newincome*12; // convert to yearly
+					newPayableTax = getIncomeTax(newincome)/12; // getting monthly income tax
+					newincome = newincome / 12; // back to monthly income b/c we have to display new take home salary monthly
+					newTakeHomeSalary = newincome - newPayableTax;
 
 					currentTaxResultSentenceTextView.setText(getResources()
 							.getString(R.string.current_tax_result_monthly)
@@ -138,24 +143,27 @@ public class CalculateImpact extends Activity {
 									+ " ");
 				}
 
-				currentTaxResultSentenceTextView.setTextSize(
-						TypedValue.COMPLEX_UNIT_PX, 60);
-				currentTaxResultTextView.setTextSize(
-						TypedValue.COMPLEX_UNIT_PX, 60);
+				currentTaxResultSentenceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				currentTaxResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
 				currentTaxResultTextView.setText(payableTax.toString() + " PKR");
 
-				currentTakeHomeSalarySentenceTextView.setTextSize(
-						TypedValue.COMPLEX_UNIT_PX, 60);
-				currentTakeHomeSalaryTextView.setTextSize(
-						TypedValue.COMPLEX_UNIT_PX, 60);
-				currentTakeHomeSalaryTextView.setText(takeHomeSalary.toString()
-						+ " PKR");
+				currentTakeHomeSalarySentenceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				currentTakeHomeSalaryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				currentTakeHomeSalaryTextView.setText(takeHomeSalary.toString()+ " PKR");
+				
+				newTaxResultSentenceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				newTaxResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				newTaxResultTextView.setText(newPayableTax.toString() + " PKR");
+
+				newTakeHomeSalarySentenceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				newTakeHomeSalaryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40);
+				newTakeHomeSalaryTextView.setText(newTakeHomeSalary.toString()+ " PKR");
 			}
 		});
 
 	}
 
-	private Long getIncomeTax(Long income) {
+	private Double getIncomeTax(Double income) {
 		incomeTaxSlabs = getSlabsFromDatabase();
 		incomeTax = new IncomeTax(income, incomeTaxSlabs);
 		return incomeTax.getPayableTax();
@@ -172,19 +180,19 @@ public class CalculateImpact extends Activity {
 		incomeTaxSlabs = new ArrayList<IncomeTaxSlab>();
 
 		// To be fetched from Database
-		incomeTaxSlabs.add(new IncomeTaxSlab(0L, 400000L, 0L, 0F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(400000L, 750000L, 0L, 5F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(750000L, 1500000L, 17500L, 10F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(1500000L, 2000000L, 95000L, 15F));
-		incomeTaxSlabs
-				.add(new IncomeTaxSlab(2000000L, 2500000L, 175000L, 17.5F));
-		incomeTaxSlabs.add(new IncomeTaxSlab(2500000L, -1L, 420000L, 20F));
+		incomeTaxSlabs.add(new IncomeTaxSlab(0d, 400000d, 0d, 0f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(400000d, 750000d, 0d, 5f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(750000d, 1500000d, 17500d, 10f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(1500000d, 2000000d, 95000d, 15f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(2000000d, 2500000d, 175000d, 17.5f));
+		incomeTaxSlabs.add(new IncomeTaxSlab(2500000d, -1d, 420000d, 20f));
 
 		return incomeTaxSlabs;
 	}
 
 	private void initUIComponents() {
 		incomeEditText = (EditText) findViewById(R.id.incomeEditText);
+		incrementEditText = (EditText) findViewById(R.id.incrementEditText);
 		typeDropDown = (Spinner) findViewById(R.id.typeDropdown);
 		calculateImpactButton = (Button) findViewById(R.id.calculateImpactButton);
 

@@ -30,19 +30,19 @@
     <string name="increment_hint_yearly">Enter Your Yearly Increment</string>
     
     <!--     Used in Calculate Tax -->
-    <string name="tax_result_monthly">You would pay monthly  </string>
-    <string name="tax_result_yearly">You would pay yearly  </string>
+    <string name="tax_result_monthly">You would pay tax monthly  </string>
+    <string name="tax_result_yearly">You would pay tax yearly  </string>
     
 <!--     Used in Calculate Impact -->
-    <string name="current_tax_result_monthly">Currently you are paying monthly </string>
-    <string name="current_tax_result_yearly">Currently you are paying yearly </string>
-    <string name="current_salary_result_monthly">Currently you are taking home monthly </string>
-    <string name="current_salary_result_yearly">Currently you are taking home yearly </string>
+    <string name="current_tax_result_monthly">Currently you are paying tax monthly </string>
+    <string name="current_tax_result_yearly">Currently you are paying tax yearly </string>
+    <string name="current_salary_result_monthly">Currrent take home salary monthly </string>
+    <string name="current_salary_result_yearly">Currrent take home salary yearly </string>
     
 <!--     Used in Calculate Impact -->    
-    <string name="new_tax_result_monthly">Now you are paying monthly </string>
-    <string name="new_tax_result_yearly">Now you are paying yearly </string>
-    <string name="new_salary_result_monthly">Now you are taking home monthly </string>
-    <string name="new_salary_result_yearly">Now you are taking home yearly </string>
+    <string name="new_tax_result_monthly">Now you are paying tax monthly </string>
+    <string name="new_tax_result_yearly">Now you are paying tax yearly </string>
+    <string name="new_salary_result_monthly">Now will be taking home monthly </string>
+    <string name="new_salary_result_yearly">Now will be taking home salary </string>
 
 </resources>
