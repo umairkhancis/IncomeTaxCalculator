@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.netpace.itc.activities.MainActivity"
+            android:name="com.netpace.itc.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,24 +24,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.netpace.itc.activities.CalculateTax"
+            android:name="com.netpace.itc.activity.CalculateTaxActivity"
             android:label="@string/title_activity_calculate_tax" >
         </activity>
         <activity
-            android:name="com.netpace.itc.activities.CalculateImpact"
+            android:name="com.netpace.itc.activity.CalculateImpactActivity"
             android:label="@string/title_activity_calculate_impact" >
         </activity>
         <activity
-            android:name="com.netpace.itc.activities.HowToSave"
+            android:name="com.netpace.itc.activity.HowToSaveActivity"
             android:label="@string/title_activity_how_to_save" >
         </activity>
         <activity
-            android:name="com.netpace.itc.activities.PlanToSave"
+            android:name="com.netpace.itc.activity.PlanToSaveActivity"
             android:label="@string/title_activity_plan_to_save" >
         </activity>
         
-        <service android:name=".GetSlabsService" />
-        
+        <service android:name="com.netpace.itc.service.CallService" />
+                
     </application>
 
 </manifest>
